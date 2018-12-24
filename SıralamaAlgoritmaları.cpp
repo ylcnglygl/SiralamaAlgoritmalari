@@ -1,8 +1,8 @@
-#include "SýralamaAlgoritmalarý.h"
+#include "SiralamaAlgoritmalari.h"//turkce karakter sorunu duzeltildi. 
 #include<iostream>
-void selectionSort(int dizi[], int elemanSayisi)
+void selectionSort(int dizi[], int elemanSayisi)//"temp" adlÄ± degisken "gecici" olarak degistirildi.
 {
-	int i, j, enKucuk, temp;
+	int i, j, enKucuk, gecici;
 	for (i = 0; i < elemanSayisi - 1; i++)
 	{
 		enKucuk = i;
@@ -11,16 +11,16 @@ void selectionSort(int dizi[], int elemanSayisi)
 			if (dizi[j] < dizi[enKucuk])
 				enKucuk = j;
 		}
-		temp = dizi[i];
+		gecici = dizi[i];
 		dizi[i] = dizi[enKucuk];
-		dizi[enKucuk] = temp;
+		dizi[enKucuk] = gecici;
 	}
 	
 }
 
-void bubbleSort(int dizi[], int elemanSayisi)
+void bubbleSort(int dizi[], int elemanSayisi)//fonksiyonlarin isimleri Turkce yazilabilir.
 {
-	int temp,count=0;
+	int gecici,count=0;
 	int i, j;
 
 	for (i = 1; i < elemanSayisi; i++)
@@ -29,9 +29,9 @@ void bubbleSort(int dizi[], int elemanSayisi)
 		{
 			if (dizi[j] > dizi[j + 1])
 			{
-				temp = dizi[j];
+				gecici = dizi[j];
 				dizi[j] = dizi[j + 1];
-				dizi[j + 1] = temp;
+				dizi[j + 1] = gecici;
 				count++;
 			}
 		}
@@ -39,7 +39,7 @@ void bubbleSort(int dizi[], int elemanSayisi)
 }
 
 int partition(int A[], int p, int r) {
-	int tmp;
+	int gecici;
 	int x = A[r];
 	int i = p - 1;
 
@@ -48,14 +48,14 @@ int partition(int A[], int p, int r) {
 		if (A[j] <= x)
 		{
 			i++;
-			tmp = A[i];
+			gecici = A[i];
 			A[i] = A[j];
-			A[j] = tmp;
+			A[j] = gecici;
 		}
 	}
-	tmp = A[i + 1];
+	gecici = A[i + 1];
 	A[i + 1] = A[r];
-	A[r] = tmp;
+	A[r] = gecici;
 	return i + 1;
 }
 
@@ -72,16 +72,16 @@ void quickSort(int A[], int p, int r)
 
 void ShellSort(int * dizi, int N)
 {
-	int i, j, h, temp;
+	int i, j, h, gecici;
 
 	for (h = 1; h <= N / 9; h = 3 * h + 1)
 		;
 	while (h) {
 		for (i = h; i < N; i += 1) {
-			temp = dizi[i];
-			for (j = i; j > h - 1 && temp < dizi[j - h]; j -= h)
+			gecici = dizi[i];
+			for (j = i; j > h - 1 && gecici < dizi[j - h]; j -= h)
 				dizi[j] = dizi[j - h];
-			dizi[j] = temp;
+			dizi[j] = gecici;
 			
 		}
 		h /= 3;
@@ -90,7 +90,7 @@ void ShellSort(int * dizi, int N)
 
 int selectionSortSwap(int dizi[], int elemanSayisi)
 {
-	int i, j, enKucuk, temp,count=0;
+	int i, j, enKucuk, gecici,sayac=0;
 	for (i = 0; i < elemanSayisi - 1; i++)
 	{
 		enKucuk = i;
@@ -101,14 +101,14 @@ int selectionSortSwap(int dizi[], int elemanSayisi)
 		}
 		temp = dizi[i];
 		dizi[i] = dizi[enKucuk];
-		dizi[enKucuk] = temp;
-		count++;
+		dizi[enKucuk] = gecici;
+		sayac++;
 	}
-	return count;
+	return sayac;
 }
 int bubbleSortSwap(int dizi[], int elemanSayisi)
 {
-	int temp, count = 0;
+	int gecici, sayac = 0;
 	int i, j;
 
 	for (i = 1; i < elemanSayisi; i++)
@@ -117,31 +117,31 @@ int bubbleSortSwap(int dizi[], int elemanSayisi)
 		{
 			if (dizi[j] > dizi[j + 1])
 			{
-				temp = dizi[j];
+				gecici = dizi[j];
 				dizi[j] = dizi[j + 1];
-				dizi[j + 1] = temp;
-				count++;
+				dizi[j + 1] = gecici;
+				sayac++;
 			}
 		}
 	}
-	return count;
+	return sayac;
 }
 
 int ShellSortSwap(int * dizi, int N)
 {
-	int i, j, h, temp,count=0;
+	int i, j, h, gecici,sayac=0;
 
 	for (h = 1; h <= N / 9; h = 3 * h + 1)
 		;
 	while (h) {
 		for (i = h; i < N; i += 1) {
-			temp = dizi[i];
-			for (j = i; j > h - 1 && temp < dizi[j - h]; j -= h)
+			gecici = dizi[i];
+			for (j = i; j > h - 1 && gecici < dizi[j - h]; j -= h)
 				dizi[j] = dizi[j - h];
-			dizi[j] = temp;
-			count++;
+			dizi[j] = gecici;
+			sayac++;
 		}
 		h /= 3;
 	}
-	return count;
+	return sayac;
 }
